@@ -1,1993 +1,458 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="light-theme">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Romantismo e Realismo | Português em Jogo</title>
+  <title>Romantismo & Realismo — Português em Jogo</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      /* Palette Light */
-      --bg-primary: #F4EADE; /* Bege suave */
-      --bg-secondary: #FFFFFF; /* Branco */
-      --bg-card: #FFFFFF;
-      --text-main: #1B263B; /* Azul-escuro */
-      --text-muted: #4A5568;
-      --primary: #1B263B; /* Azul-escuro nobre */
-      --accent: #6B1124; /* Vinho elegante */
-      --accent-hover: #520B1A;
-      --gold: #D4AF37;
-      --border-color: #E2D9CD;
-      --shadow: 0 10px 25px -5px rgba(27, 38, 59, 0.08), 0 8px 10px -6px rgba(27, 38, 59, 0.04);
-      --shadow-hover: 0 20px 30px -10px rgba(107, 17, 36, 0.15);
-      
-      /* Status Colors */
-      --success: #2E7D32;
-      --success-bg: #E8F5E9;
-      --error: #C62828;
-      --error-bg: #FFEBEE;
-      
-      /* Transitions */
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --radius: 16px;
-    }
-
-    .dark-theme {
-      /* Palette Dark */
-      --bg-primary: #0F172A;
-      --bg-secondary: #1E293B;
-      --bg-card: #1E293B;
-      --text-main: #F1F5F9;
-      --text-muted: #94A3B8;
-      --primary: #38BDF8;
-      --accent: #E11D48;
-      --accent-hover: #F43F5E;
-      --gold: #FACC15;
-      --border-color: #334155;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-      --shadow-hover: 0 20px 30px -10px rgba(225, 29, 72, 0.25);
-      
-      --success: #4ADE80;
-      --success-bg: rgba(74, 222, 128, 0.1);
-      --error: #F87171;
-      --error-bg: rgba(248, 113, 113, 0.1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    h1, h2, h3, h4, .brand-title {
-      font-family: 'Cinzel', serif;
-      letter-spacing: -0.02em;
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      transition: var(--transition);
-    }
-
-    .dark-theme .header {
-      background-color: rgba(30, 41, 59, 0.9);
-    }
-
-    .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0.75rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--text-main);
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--accent), var(--primary));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.25rem;
-      box-shadow: 0 4px 12px rgba(107, 17, 36, 0.2);
-    }
-
-    .logo-text h1 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--accent);
-    }
-
-    .logo-text span {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      list-style: none;
-    }
-
-    .nav-btn {
-      padding: 0.6rem 1rem;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .nav-btn:hover {
-      color: var(--accent);
-      background-color: rgba(107, 17, 36, 0.05);
-    }
-
-    .nav-btn.active {
-      color: #FFFFFF;
-      background-color: var(--accent);
-      box-shadow: 0 4px 12px rgba(107, 17, 36, 0.25);
-    }
-
-    .theme-toggle-btn {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      transition: var(--transition);
-      margin-left: 0.5rem;
-    }
-
-    .theme-toggle-btn:hover {
-      transform: scale(1.05);
-      border-color: var(--accent);
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text-main);
-      cursor: pointer;
-    }
-
-    main {
-      flex: 1;
-      max-width: 1280px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
-      align-items: center;
-      min-height: 70vh;
-      padding: 2rem 0;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      background-color: rgba(107, 17, 36, 0.08);
-      border: 1px solid rgba(107, 17, 36, 0.15);
-      border-radius: 30px;
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.85rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
-      line-height: 1.1;
-      color: var(--text-main);
-      margin-bottom: 1rem;
-    }
-
-    .hero-title span {
-      color: var(--accent);
-      display: block;
-    }
-
-    .hero-desc {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
-
-    .hero-authors {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-      padding: 1rem 1.25rem;
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      width: fit-content;
-      box-shadow: var(--shadow);
-    }
-
-    .authors-avatars {
-      display: flex;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--primary));
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      border: 2px solid var(--bg-card);
-      font-size: 0.9rem;
-    }
-
-    .avatar:nth-child(2) {
-      margin-left: -12px;
-      background: linear-gradient(135deg, var(--primary), var(--gold));
-    }
-
-    .authors-info p {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-    }
-
-    .authors-info h4 {
-      font-size: 0.95rem;
-      color: var(--text-main);
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.85rem 1.75rem;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background-color: var(--accent);
-      color: #FFFFFF;
-      box-shadow: 0 8px 20px rgba(107, 17, 36, 0.25);
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(107, 17, 36, 0.35);
-    }
-
-    .btn-secondary {
-      background-color: var(--bg-card);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* Hero Animated Book Graphic */
-    .hero-graphic {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .animated-book-container {
-      width: 280px;
-      height: 360px;
-      perspective: 1000px;
-    }
-
-    .animated-book {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      animation: floatBook 4s ease-in-out infinite;
-    }
-
-    @keyframes floatBook {
-      0%, 100% { transform: translateY(0) rotateY(-15deg) rotateX(5deg); }
-      50% { transform: translateY(-15deg) rotateY(-5deg) rotateX(2deg); }
-    }
-
-    .book-cover {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--accent), #3B0914);
-      border-radius: 8px 16px 16px 8px;
-      box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.3);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: var(--gold);
-      border-left: 8px solid #3B0914;
-    }
-
-    .book-cover h3 {
-      font-size: 1.5rem;
-      border-bottom: 2px solid var(--gold);
-      padding-bottom: 0.5rem;
-      color: #FFF;
-    }
-
-    .book-pages-deco {
-      position: absolute;
-      right: -12px;
-      top: 10px;
-      bottom: 10px;
-      width: 20px;
-      background: linear-gradient(90deg, #fff, #e0e0e0, #fff);
-      border-radius: 0 4px 4px 0;
-      box-shadow: inset -2px 0 5px rgba(0,0,0,0.1);
-    }
-
-    .section-title {
-      font-size: 2.2rem;
-      color: var(--text-main);
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-muted);
-      margin-bottom: 3rem;
-      font-size: 1.05rem;
-    }
-
-    .movement-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--accent);
-    }
-
-    .card-tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-    }
-
-    .tag-romantismo {
-      background-color: rgba(107, 17, 36, 0.1);
-      color: var(--accent);
-    }
-
-    .tag-realismo {
-      background-color: rgba(27, 38, 59, 0.1);
-      color: var(--primary);
-    }
-
-    .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-    }
-
-    .card p {
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-      font-size: 0.95rem;
-    }
-
-    .feature-list {
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    .feature-list li {
-      padding: 0.4rem 0;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .feature-list li::before {
-      content: "✦";
-      color: var(--gold);
-      font-size: 0.8rem;
-    }
-
-    /* Generations Badge Container */
-    .generations-container {
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .gen-box {
-      background: var(--bg-primary);
-      padding: 0.85rem;
-      border-radius: 10px;
-      border-left: 3px solid var(--accent);
-    }
-
-    .gen-box h5 {
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-bottom: 0.2rem;
-    }
-
-    .gen-box p {
-      font-size: 0.8rem;
-      margin: 0;
-    }
-
-    .comparison-section {
-      margin: 4rem 0;
-    }
-
-    .table-wrapper {
-      overflow-x: auto;
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .comp-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .comp-table th, .comp-table td {
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .comp-table th {
-      background-color: rgba(107, 17, 36, 0.05);
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
-      color: var(--accent);
-    }
-
-    .comp-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .comp-table tr:hover td {
-      background-color: rgba(0, 0, 0, 0.015);
-    }
-
-    /* Exam Tips Card */
-    .exam-tips {
-      background: linear-gradient(135deg, var(--bg-card), var(--bg-primary));
-      border: 2px dashed var(--gold);
-      border-radius: var(--radius);
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-
-    .exam-tips h4 {
-      color: var(--gold);
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .example-block {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 2rem;
-      border: 1px solid var(--border-color);
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-    }
-
-    .literary-quote {
-      font-family: 'Cinzel', serif;
-      font-style: italic;
-      padding: 1.25rem 1.5rem;
-      background: var(--bg-primary);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 12px 12px 0;
-      margin: 1rem 0;
-      font-size: 1.05rem;
-    }
-
-    .analysis-box {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(46, 125, 50, 0.08);
-      border-radius: 10px;
-      border: 1px solid rgba(46, 125, 50, 0.2);
-    }
-
-    .analysis-box h5 {
-      color: var(--success);
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .work-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .work-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .work-card h4 {
-      font-size: 1.15rem;
-      color: var(--text-main);
-      margin-bottom: 0.25rem;
-    }
-
-    .work-author {
-      font-size: 0.85rem;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 3px;
-      background: var(--border-color);
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      margin-bottom: 2rem;
-      position: relative;
-      width: 50%;
-      padding: 0 2rem;
-    }
-
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 50%;
-      text-align: left;
-    }
-
-    .timeline-dot {
-      width: 18px;
-      height: 18px;
-      background: var(--accent);
-      border: 3px solid var(--bg-card);
-      border-radius: 50%;
-      position: absolute;
-      top: 15px;
-      box-shadow: 0 0 0 3px rgba(107, 17, 36, 0.2);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-dot {
-      right: -9px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-dot {
-      left: -9px;
-    }
-
-    .timeline-content {
-      background: var(--bg-card);
-      padding: 1.25rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .timeline-year {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 1.1rem;
-    }
-
-    /* Mindmap Interactive Grid */
-    .mindmap-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .mindmap-node {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      border: 2px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .mindmap-header {
-      text-align: center;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--border-color);
-      margin-bottom: 1rem;
-    }
-
-    .mindmap-branches {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .branch {
-      background: var(--bg-primary);
-      padding: 0.75rem;
-      border-radius: 8px;
-    }
-
-    .branch h5 {
-      color: var(--accent);
-      font-size: 0.85rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .quiz-container {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .quiz-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .quiz-score-badge {
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(107, 17, 36, 0.1);
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-    }
-
-    .progress-bar-container {
-      width: 100%;
-      height: 10px;
-      background: var(--bg-primary);
-      border-radius: 5px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--gold));
-      transition: width 0.3s ease;
-    }
-
-    .question-box {
-      margin-bottom: 2rem;
-    }
-
-    .question-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--text-main);
-    }
-
-    .options-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .option-btn {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      border: 1.5px solid var(--border-color);
-      border-radius: 12px;
-      background: var(--bg-card);
-      color: var(--text-main);
-      text-align: left;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .option-btn:hover:not(:disabled) {
-      border-color: var(--accent);
-      background: rgba(107, 17, 36, 0.03);
-    }
-
-    .option-btn.correct {
-      background: var(--success-bg) !important;
-      border-color: var(--success) !important;
-      color: var(--success) !important;
-      font-weight: 700;
-    }
-
-    .option-btn.wrong {
-      background: var(--error-bg) !important;
-      border-color: var(--error) !important;
-      color: var(--error) !important;
-      font-weight: 700;
-    }
-
-    .feedback-box {
-      margin-top: 1.5rem;
-      padding: 1.25rem;
-      border-radius: 12px;
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .feedback-box.show {
-      display: block;
-    }
-
-    .feedback-box.correct-fb {
-      background: var(--success-bg);
-      border: 1px solid var(--success);
-      color: var(--success);
-    }
-
-    .feedback-box.wrong-fb {
-      background: var(--error-bg);
-      border: 1px solid var(--error);
-      color: var(--error);
-    }
-
-    .next-btn {
-      margin-top: 1.5rem;
-      display: none;
-      width: 100%;
-    }
-
-    /* Achievements Bar */
-    .achievements-wrapper {
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .achieve-card {
-      background: var(--bg-primary);
-      padding: 0.75rem;
-      border-radius: 10px;
-      text-align: center;
-      opacity: 0.4;
-      filter: grayscale(1);
-      transition: var(--transition);
-      border: 1px solid var(--border-color);
-    }
-
-    .achieve-card.unlocked {
-      opacity: 1;
-      filter: grayscale(0);
-      background: var(--bg-card);
-      border-color: var(--gold);
-      box-shadow: var(--shadow);
-    }
-
-    .achieve-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .achieve-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .final-challenge-card {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      border: 2px solid var(--gold);
-      box-shadow: var(--shadow);
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      font-size: 0.9rem;
-    }
-
-    .form-input, .form-textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      background: var(--bg-primary);
-      color: var(--text-main);
-      font-family: inherit;
-    }
-
-    .form-textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .expected-answer {
-      margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid var(--gold);
-      border-radius: 12px;
-      display: none;
-    }
-
-    footer {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border-color);
-      padding: 2rem 1.5rem;
-      margin-top: auto;
-      text-align: center;
-    }
-
-    .back-top-btn {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #FFF;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transition: var(--transition);
-      z-index: 99;
-    }
-
-    .back-top-btn.visible {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Responsive Breakpoints */
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-      .hero-desc { margin: 0 auto 2rem; }
-      .hero-authors { margin: 0 auto 2.5rem; }
-      .hero-cta { justify-content: center; }
-      .mindmap-grid { grid-template-columns: 1fr; }
-      .timeline::before { left: 20px; }
-      .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; text-align: left !important; }
-      .timeline-item:nth-child(even) { left: 0; }
-      .timeline-dot { left: 11px !important; }
-    }
-
-    @media (max-width: 768px) {
-      .nav-menu {
-        position: fixed;
-        top: 65px;
-        left: 0;
-        right: 0;
-        background: var(--bg-card);
-        flex-direction: column;
-        padding: 1.5rem;
-        border-bottom: 1px solid var(--border-color);
-        box-shadow: var(--shadow);
-        display: none;
-      }
-      .nav-menu.show { display: flex; }
-      .mobile-menu-btn { display: block; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header class="header">
+  <!-- Barra de Navegação Header -->
+  <header class="navbar">
     <div class="nav-container">
-      <a href="#" class="logo" onclick="switchTab('inicio')">
-        <div class="logo-icon">📚</div>
-        <div class="logo-text">
-          <h1>Romantismo & Realismo</h1>
-          <span>Português em Jogo</span>
-        </div>
-      </a>
-
-      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Abrir Menu">☰</button>
-
-      <ul class="nav-menu" id="navMenu">
-        <li><button class="nav-btn active" onclick="switchTab('inicio')">Início</button></li>
-        <li><button class="nav-btn" onclick="switchTab('aprenda')">Aprenda</button></li>
-        <li><button class="nav-btn" onclick="switchTab('exemplos')">Exemplos</button></li>
-        <li><button class="nav-btn" onclick="switchTab('explore')">Explore</button></li>
-        <li><button class="nav-btn" onclick="switchTab('desafio')">Desafio</button></li>
-        <li><button class="nav-btn" onclick="switchTab('gabarito')">Gabarito</button></li>
-        <li><button class="nav-btn" onclick="switchTab('desafio-final')">Desafio Final</button></li>
-      </ul>
-
-      <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn" title="Alternar tema">🌙</button>
+      <div class="brand">
+        <span class="brand-icon">📖</span>
+        <span class="brand-text">Português em Jogo</span>
+      </div>
+      <nav class="nav-menu" id="navMenu">
+        <button class="nav-btn active" onclick="showTab('inicio', this)">Início</button>
+        <button class="nav-btn" onclick="showTab('aprenda', this)">Aprenda</button>
+        <button class="nav-btn" onclick="showTab('exemplos', this)">Exemplos</button>
+        <button class="nav-btn" onclick="showTab('explore', this)">Explore</button>
+        <button class="nav-btn" onclick="showTab('desafio', this)">Desafio</button>
+        <button class="nav-btn" onclick="showTab('gabarito', this)">Gabarito</button>
+        <button class="nav-btn" onclick="showTab('desafio-final', this)">Desafio Final</button>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="main-content">
 
-    <!-- PÁGINA INÍCIO -->
+    <!-- 1. PÁGINA INICIAL -->
     <section id="inicio" class="tab-content active">
-      <div class="hero-grid">
-        <div class="hero-text">
-          <div class="hero-badge">✨ Plataforma Interativa de Literatura</div>
-          <h1 class="hero-title">Romantismo <span>& Realismo</span></h1>
-          <p class="hero-desc">Sua ferramenta completa e gamificada para revisar a literatura do Ensino Médio, dominar as diferenças entre idealização e razão e se preparar com excelência para exames e vestibulares.</p>
-
-          <div class="hero-authors">
-            <div class="authors-avatars">
-              <div class="avatar">L</div>
-              <div class="avatar">M</div>
-            </div>
-            <div class="authors-info">
-              <p>Projeto Desenvolvido por</p>
-              <h4>Luan & Matheus S.</h4>
-            </div>
-          </div>
-
-          <div class="hero-cta">
-            <button class="btn btn-primary" onclick="switchTab('aprenda')">📖 Começar a estudar</button>
-            <button class="btn btn-secondary" onclick="switchTab('desafio')">🏆 Ir para o desafio</button>
-          </div>
+      <div class="hero">
+        <div class="hero-badge">Projeto Escolar • Ensino Médio</div>
+        <h1 class="hero-title">Romantismo <span>&</span> Realismo</h1>
+        <p class="hero-subtitle">Uma jornada interativa e gamificada pela história da Literatura Brasileira.</p>
+        
+        <div class="authors-badge">
+          <span>👥 Desenvolvido por:</span> <strong>Luan & Matheus S.</strong>
         </div>
 
-        <div class="hero-graphic">
-          <div class="animated-book-container">
-            <div class="animated-book">
-              <div class="book-cover">
-                <div>
-                  <small style="text-transform: uppercase; letter-spacing: 2px;">Literatura</small>
-                  <h3>Século XIX</h3>
-                </div>
-                <div>
-                  <p style="font-size: 0.85rem; opacity: 0.9;">Do Sentimento à Razão Objetiva</p>
-                </div>
-              </div>
-              <div class="book-pages-deco"></div>
-            </div>
-          </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="navigateTo('aprenda')">📚 Começar a estudar</button>
+          <button class="btn btn-secondary" onclick="navigateTo('desafio')">🎮 Ir para o desafio</button>
+        </div>
+
+        <div class="hero-animation">
+          <div class="floating-book">📖</div>
+          <div class="floating-sparkle">✨</div>
         </div>
       </div>
     </section>
 
-    <!-- PÁGINA APRENDA -->
+    <!-- 2. PÁGINA APRENDA -->
     <section id="aprenda" class="tab-content">
-      <h2 class="section-title">Aprenda o Conteúdo</h2>
-      <p class="section-subtitle">Resumos originais e objetivos preparados para o 2º ano do Ensino Médio.</p>
-
-      <div class="movement-grid">
-        <!-- ROMANTISMO -->
-        <div class="card">
-          <span class="card-tag tag-romantismo">Século XIX (1ª Metade)</span>
-          <h3>O Romantismo</h3>
-          <p>Movimento artístico e literário que priorizou a emoção, a individualidade e a liberdade criativa em resposta ao Racionalismo Ilustrado e à Revolução Industrial. No Brasil, iniciou-se em 1836 com a obra <em>Suspiros Poéticos e Saudades</em> de Gonçalves de Magalhães.</p>
-          
-          <h4 style="font-size: 1rem; margin-top: 1rem;">Principais Características:</h4>
-          <ul class="feature-list">
-            <li><strong>Subjetivismo & Sentimentalismo:</strong> O mundo interior e as emoções do 'Eu' acima da lógica.</li>
-            <li><strong>Nacionalismo & Indianismo:</strong> Busca pela identidade brasileira com o indígena como herói nacional.</li>
-            <li><strong>Idealização Amorosa:</strong> A mulher amada vista como um ser inalcançável e perfeito.</li>
-            <li><strong>Fuga da Realidade (Escapismo):</strong> Desejo de evasão através do sonho, da natureza ou da morte.</li>
-            <li><strong>Religiosidade:</strong> A busca pelo divino como refúgio espiritual.</li>
-          </ul>
-
-          <h4 style="font-size: 1rem; margin-top: 1.5rem;">As 3 Gerações Poéticas no Brasil:</h4>
-          <div class="generations-container">
-            <div class="gen-box">
-              <h5>1ª Geração — Nacionalista / Indianista</h5>
-              <p>Exaltação da pátria e da natureza. Autor em destaque: <strong>Gonçalves Dias</strong> (<em>Canção do Exílio</em>).</p>
-            </div>
-            <div class="gen-box">
-              <h5>2ª Geração — Ultrarromântica / Mal do Século</h5>
-              <p>Pessimismo, melancolia e fascínio pela morte. Autor: <strong>Álvares de Azevedo</strong> (<em>Lira dos Vinte Anos</em>).</p>
-            </div>
-            <div class="gen-box">
-              <h5>3ª Geração — Condoreira / Social</h5>
-              <p>Luta pela abolição da escravidão e liberdade pública. Autor: <strong>Castro Alves</strong> (<em>O Navio Negreiro</em>).</p>
-            </div>
-          </div>
-
-          <h4 style="font-size: 1rem; margin-top: 1.5rem;">Prosa Romântica:</h4>
-          <p style="font-size: 0.9rem;">Destaque para <strong>José de Alencar</strong> (autor de <em>Iracema</em> e <em>O Guarani</em>) e <strong>Joaquim Manuel de Macedo</strong> (autor de <em>A Moreninha</em>).</p>
-        </div>
-
-        <!-- REALISMO -->
-        <div class="card">
-          <span class="card-tag tag-realismo">Século XIX (2ª Metade)</span>
-          <h3>O Realismo</h3>
-          <p>Surgido na Europa em meio às teorias cientificistas (Cientificismo, Positivismo, Determinismo), o Realismo opõe-se ao Romantismo, focando na observação fiel da sociedade e nos vícios humanos. No Brasil, o marco inicial foi a publicação de <em>Memórias Póstumas de Brás Cubas</em> (1881) de Machado de Assis.</p>
-          
-          <h4 style="font-size: 1rem; margin-top: 1rem;">Principais Características:</h4>
-          <ul class="feature-list">
-            <li><strong>Objetividade & Racionalidade:</strong> Análise crua dos fatos e comportamentos sem idealização.</li>
-            <li><strong>Análise Psicológica:</strong> Investigação profunda da mente e das motivações das personagens.</li>
-            <li><strong>Crítica Social & Ironia:</strong> Denúncia do casamento por interesse, hipocrisia burguesa e da Igreja.</li>
-            <li><strong>Antirromantismo:</strong> Desmistificação do amor puro e revelação do adultério.</li>
-            <li><strong>Linguagem Direta & Apurada:</strong> Descrições pormenorizadas e reflexivas.</li>
-          </ul>
-
-          <h4 style="font-size: 1rem; margin-top: 1.5rem;">Principais Autores & Obras:</h4>
-          <div class="generations-container">
-            <div class="gen-box">
-              <h5>Machado de Assis (O Mestre)</h5>
-              <p>Pai do Realismo brasileiro. Obras-primas: <em>Memórias Póstumas de Brás Cubas</em>, <em>Dom Casmurro</em> e <em>Quincas Borba</em>.</p>
-            </div>
-            <div class="gen-box">
-              <h5>Raul Pompeia</h5>
-              <p>Autor de <em>O Ateneu</em>, obra com forte análise psicológica da vida escolar em internatos.</p>
-            </div>
-            <div class="gen-box" style="border-left-color: var(--gold);">
-              <h5>Aluísio Azevedo (Naturalismo)</h5>
-              <p>Associado principalmente ao <strong>Naturalismo</strong> (vertente radical do Realismo focada nos instintos e determinismo com <em>O Cortiço</em>).</p>
-            </div>
-          </div>
-        </div>
+      <div class="section-header">
+        <h2>Conteúdo Educativo</h2>
+        <p>Resumo didático para revisar os principais aspectos do Romantismo e do Realismo.</p>
       </div>
 
+      <div class="grid-2">
+        <!-- ROMANTISMO -->
+        <article class="card">
+          <div class="card-tag tag-romantismo">Século XIX — 1ª Metade</div>
+          <h3 class="card-title">🕯️ Romantismo</h3>
+          <p class="card-desc">Movimento focado na emoção, no indivíduo e no idealismo, surgido em resposta ao Racionalismo Iluminista.</p>
+          
+          <h4 class="sub-heading">Contexto Histórico & Brasil</h4>
+          <p class="card-desc">Ganhou força após a Revolução Francesa. No Brasil, iniciou-se em 1836 com a obra <em>Suspiros Poéticos e Saudades</em> (Gonçalves de Magalhães), impulsionado pela busca de uma identidade nacional após a Independência em 1822.</p>
+
+          <h4 class="sub-heading">Principais Características</h4>
+          <ul class="feature-list">
+            <li><strong>Subjetivismo & Sentimentalismo:</strong> O ego e os sentimentos acima da razão.</li>
+            <li><strong>Nacionalismo & Indianismo:</strong> O indígena é eleito o herói nacional mítico e puro.</li>
+            <li><strong>Idealização Amorosa:</strong> A mulher amada é vista como inalcançável e perfeita.</li>
+            <li><strong>Fuga da Realidade (Escapismo):</strong> Refúgio na morte, no passado, no sonho ou na natureza.</li>
+            <li><strong>Valorização da Natureza:</strong> A natureza reflete o estado de alma do poeta.</li>
+            <li><strong>Religiosidade:</strong> Busca pelo transcendente como consolo para a dor existencial.</li>
+          </ul>
+
+          <h4 class="sub-heading">Gerações da Poesia Romântica</h4>
+          <ul class="feature-list">
+            <li><strong>1ª Geração (Nacionalista/Indianista):</strong> Gonçalves Dias ("Canção do Exílio"). Exaltação da pátria e do índio.</li>
+            <li><strong>2ª Geração (Ultra-Romântica / Mal do Século):</strong> Álvares de Azevedo ("Lira dos Vinte Anos"). Pessimismo, melancolia e atração pela morte.</li>
+            <li><strong>3ª Geração (Condoreira / Social):</strong> Castro Alves ("O Navio Negreiro"). Poesia engajada de luta abolicionista.</li>
+          </ul>
+
+          <h4 class="sub-heading">Prosa Romântica Notável</h4>
+          <p class="card-desc">José de Alencar (<em>Iracema</em>, <em>O Guarani</em>) e Joaquim Manuel de Macedo (<em>A Moreninha</em>).</p>
+        </article>
+
+        <!-- REALISMO -->
+        <article class="card">
+          <div class="card-tag tag-realismo">Século XIX — 2ª Metade</div>
+          <h3 class="card-title">🔬 Realismo</h3>
+          <p class="card-desc">Movimento fundamentado na observação imparcial da sociedade, na crítica social e na análise psicológica.</p>
+
+          <h4 class="sub-heading">Contexto Histórico & Brasil</h4>
+          <p class="card-desc">Aparece na segunda metade do século XIX sob influência do Cientificismo, Positivismo e Darwinismo. No Brasil, é inaugurado em 1881 com <em>Memórias Póstumas de Brás Cubas</em> de Machado de Assis.</p>
+
+          <h4 class="sub-heading">Principais Características</h4>
+          <ul class="feature-list">
+            <li><strong>Objetividade & Racionalidade:</strong> Análise crítica e direta da realidade factual.</li>
+            <li><strong>Critica Social & Antirromantismo:</strong> Desmistificação do casamento por interesse e da hipocrisia burguesa.</li>
+            <li><strong>Análise Psicológica:</strong> Foco nas motivações internas, falhas morais e contradições humanas.</li>
+            <li><strong>Ironia & Sarcasmo:</strong> Linguagem elegante porém cortante para expor desvios da elite.</li>
+            <li><strong>Retrato Fiel da Sociedade:</strong> Personagens complexos e verossímeis (não há heróis perfeitos).</li>
+          </ul>
+
+          <h4 class="sub-heading">Principais Autores e Obras</h4>
+          <ul class="feature-list">
+            <li><strong>Machado de Assis:</strong> Maior nome da literatura brasileira. Obras: <em>Dom Casmurro</em>, <em>Memórias Póstumas de Brás Cubas</em>, <em>Quincas Borba</em>.</li>
+            <li><strong>Raul Pompeia:</strong> Autor da obra <em>O Ateneu</em> (análise impressionista/realista das instituições).</li>
+            <li><strong>Aluísio Azevedo:</strong> Notabilizou o Naturalismo (vertente radical do Realismo focada no determinismo social e biológico em obras como <em>O Cortiço</em>).</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- COMPARAÇÃO -->
       <div class="comparison-section">
-        <h3 style="text-align: center; margin-bottom: 1.5rem;">Comparação Direta: Romantismo vs Realismo</h3>
-        <div class="table-wrapper">
-          <table class="comp-table">
+        <h3 class="section-title">⚖️ Comparativo: Romantismo vs. Realismo</h3>
+        <div class="table-container">
+          <table class="comparison-table">
             <thead>
               <tr>
                 <th>Critério</th>
-                <th>Romantismo</th>
-                <th>Realismo</th>
+                <th>🕯️ Romantismo</th>
+                <th>🔬 Realismo</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Visão do Mundo</strong></td>
+                <td><strong>Foco Central</strong></td>
                 <td>Sentimento, emoção e intuição</td>
-                <td>Razão, ciência e objetividade</td>
+                <td>Razão, lógica e observação científica</td>
+              </tr>
+              <tr>
+                <td><strong>Visão de Mundo</strong></td>
+                <td>Subjetivismo e Idealização</td>
+                <td>Objetividade e Análise Crítica</td>
               </tr>
               <tr>
                 <td><strong>Personagens</strong></td>
-                <td>Heróis idealizados, puros e sem falhas</td>
-                <td>Personagens complexos, falhos e humanos</td>
+                <td>Heróis idealizados e perfeitos</td>
+                <td>Seres humanos com falhas e vícios</td>
               </tr>
               <tr>
-                <td><strong>Mulher</strong></td>
-                <td>Anjo de pureza, inacessível e perfeita</td>
-                <td>Mulher real, com virtudes, vícios e desejos</td>
-              </tr>
-              <tr>
-                <td><strong>Amor</strong></td>
-                <td>Amor sublime, salvação espiritual</td>
-                <td>Interesse material, conveniência social</td>
+                <td><strong>Amor e Casamento</strong></td>
+                <td>Unão pura, espiritual e sublime</td>
+                <td>Contrato social, interesse e hipocrisia</td>
               </tr>
               <tr>
                 <td><strong>Natureza</strong></td>
-                <td>Espelho dos sentimentos do autor</td>
-                <td>Cenário neutro ou objeto de observação</td>
-              </tr>
-              <tr>
-                <td><strong>Sociedade</strong></td>
-                <td>Fuga da sociedade individualista</td>
-                <td>Análise e denúncia dos vícios sociais</td>
+                <td>Espelho das emoções do poeta</td>
+                <td>Cenário neutro ou objeto de estudo</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <div class="exam-tips">
-        <h4>💡 Como diferenciar os dois na prova?</h4>
-        <p><strong>Dica de Ouro:</strong> Observe o foco do narrador!</p>
-        <p style="margin-top: 0.5rem;">• Se o texto usa adjetivos intensos, chora a perda do amor, exalta a natureza ou coloca o indígena num pedestal: <strong>É ROMANTISMO</strong>.</p>
-        <p style="margin-top: 0.5rem;">• Se o texto deboche sutilmente das convenções, investiga os motivos ocultos das ações humanas ou descreve a hipocrisia em um jantar burguês: <strong>É REALISMO</strong>.</p>
+      <!-- DICAS DE PROVA -->
+      <div class="card tips-card">
+        <h3>💡 Como diferenciar os dois na prova?</h3>
+        <div class="tips-grid">
+          <div class="tip-box">
+            <h4>Se a questão mostrar:</h4>
+            <p>Linguagem emotiva, exclamações, foco no "EU", busca pela pátria, exaltação do amor impossível ou sofrimento existencial...</p>
+            <span class="badge badge-rom">👉 Marque: ROMANTISMO</span>
+          </div>
+          <div class="tip-box">
+            <h4>Se a questão mostrar:</h4>
+            <p>Tom irônico, frases diretas, crítica a comportamentos sociais, casamentos arranjados por interesse ou dúvidas sobre intenções humanas...</p>
+            <span class="badge badge-real">👉 Marque: REALISMO</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- PÁGINA EXEMPLOS -->
+    <!-- 3. PÁGINA EXEMPLOS -->
     <section id="exemplos" class="tab-content">
-      <h2 class="section-title">Exemplos Comentados</h2>
-      <p class="section-subtitle">Analise trechos autorais e conheça os cards de obras fundamentais.</p>
+      <div class="section-header">
+        <h2>Exemplos Comentados</h2>
+        <p>Aprenda a identificar na prática as estruturas de cada escola literária com trechos originais e análise técnica.</p>
+      </div>
 
-      <div class="example-block">
-        <span class="card-tag tag-romantismo">Trecho Autoral Romântico</span>
-        <div class="literary-quote">
-          "Ó minha doce virgem dos meus sonhos, tua alma é tão pura quanto o orvalho da manhã. Quando contemplo os céus, vejo a luz dos teus olhos a me guiar pela noite fria. Sem teu amor, resta-me apenas a sepultura como leito de descanso."
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-tag tag-romantismo">Exemplo Prático</div>
+          <h3>🕯️ Trecho Autoral — Romantismo</h3>
+          <blockquote class="literary-quote">
+            "Minha alma padece nas sombras desta noite sem fim. Teu olhar, anjo puro, é a luz remota que jamais poderei tocar. Prefiro perder-me na imensidão das matas a viver neste mundo sem o teu amor..."
+          </blockquote>
+          <div class="analysis-box">
+            <strong>Análise do Trecho:</strong>
+            <p>O texto exemplifica o **Romantismo** devido ao uso intensivo de hiperbolizações dramáticas ("alma padece", "noite sem fim"), idealização da mulher como um "anjo inalcançável", subjetivismo acentuado e a busca pela fuga na natureza como refúgio do sofrimento amoroso.</p>
+          </div>
         </div>
-        <div class="analysis-box">
-          <h5>🔍 Análise do Exemplo Romântico:</h5>
-          <p style="font-size: 0.9rem;">Este trecho apresenta <strong>idealização amorosa</strong> (a mulher vista como ser celestial pura), <strong>subjetivismo</strong> e o tema do <strong>escapismo/morte</strong> ("sepultura como leito"), elementos clássicos do Ultrarromantismo (2ª Geração).</p>
+
+        <div class="card">
+          <div class="card-tag tag-realismo">Exemplo Prático</div>
+          <h3>🔬 Trecho Autoral — Realismo</h3>
+          <blockquote class="literary-quote">
+            "Casaram-se não por simpatia de almas, mas por conveniência de saldos bancários. Ele buscava um título respeitável na praça; ela, a garantia de vestidos finos no domingo. A afeição durou o tempo exato das felicitações dos convidados."
+          </blockquote>
+          <div class="analysis-box">
+            <strong>Análise do Trecho:</strong>
+            <p>O trecho é visivelmente **Realista** pois utiliza um tom irônico e desapaixonado para desmistificar o casamento burguês. Destaca a motivação financeira por trás do matrimônio e analisa o comportamento social sem idealizações românticas.</p>
+          </div>
         </div>
       </div>
 
-      <div class="example-block">
-        <span class="card-tag tag-realismo">Trecho Autoral Realista</span>
-        <div class="literary-quote">
-          "Doutor Dantas dizia amar a esposa com devoção de santo; no entanto, contava discretamente as moedas do dote que ela trouxera. No salão, trocavam olhares polidos que alimentavam as colunas sociais da época. O casamento era, afinal, um excelente contrato comercial."
+      <h3 class="section-title">📚 Obras & Autores Notáveis</h3>
+      <div class="authors-grid">
+        <div class="author-card">
+          <h4>Gonçalves Dias</h4>
+          <span class="author-sub">Romantismo (1ª Geração)</span>
+          <p><strong>Obra:</strong> <em>Canção do Exílio</em></p>
+          <p><strong>Característica:</strong> Exaltação da natureza pátria e saudosismo.</p>
         </div>
-        <div class="analysis-box">
-          <h5>🔍 Análise do Exemplo Realista:</h5>
-          <p style="font-size: 0.9rem;">O trecho expõe a <strong>ironia</strong> e a <strong>crítica à hipocrisia do casamento por interesse</strong> na sociedade burguesa, além de analisar com <strong>objetividade</strong> o comportamento humano desprovido de romantismo.</p>
+        <div class="author-card">
+          <h4>Álvares de Azevedo</h4>
+          <span class="author-sub">Romantismo (2ª Geração)</span>
+          <p><strong>Obra:</strong> <em>Lira dos Vinte Anos</em></p>
+          <p><strong>Característica:</strong> Escapismo, egocentrismo e obsessão pela morte.</p>
         </div>
-      </div>
-
-      <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; text-align: center;">Cards Interativos de Obras Recomendadas</h3>
-      <div class="works-grid">
-        <div class="work-card">
-          <span class="card-tag tag-romantismo">Romantismo</span>
-          <h4>Iracema</h4>
-          <p class="work-author">José de Alencar</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Prosa Indianista que narra a lenda do nascimento do Ceará através do amor da 'virgem dos lábios de mel' e do colonizador Martim.</p>
+        <div class="author-card">
+          <h4>Machado de Assis</h4>
+          <span class="author-sub">Realismo</span>
+          <p><strong>Obra:</strong> <em>Dom Casmurro</em> / <em>Brás Cubas</em></p>
+          <p><strong>Característica:</strong> Ironia refinada, narrador não confiável e análise da psique.</p>
         </div>
-        <div class="work-card">
-          <span class="card-tag tag-romantismo">Romantismo</span>
-          <h4>Lira dos Vinte Anos</h4>
-          <p class="work-author">Álvares de Azevedo</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Coletânea poética marcada pelo dualismo entre a beleza idealizada e a ironia macabra do Mal do Século.</p>
-        </div>
-        <div class="work-card">
-          <span class="card-tag tag-romantismo">Romantismo</span>
-          <h4>O Navio Negreiro</h4>
-          <p class="work-author">Castro Alves</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Poema condoreiro de denúncia social contra o tráfico negreiro e o horror da escravidão no Brasil.</p>
-        </div>
-        <div class="work-card">
-          <span class="card-tag tag-realismo">Realismo</span>
-          <h4>Memórias Póstumas de Brás Cubas</h4>
-          <p class="work-author">Machado de Assis</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Narrações de um 'defunto autor' que revisa sua vida sem o peso das convenções sociais, cheio de ironia e pessimismo.</p>
-        </div>
-        <div class="work-card">
-          <span class="card-tag tag-realismo">Realismo</span>
-          <h4>Dom Casmurro</h4>
-          <p class="work-author">Machado de Assis</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">A fascinante narrativa obsessiva de Bento Santiago sobre o suposto adultério de Capitu e seu ciúme corrosivo.</p>
-        </div>
-        <div class="work-card">
-          <span class="card-tag tag-realismo">Realismo</span>
-          <h4>O Ateneu</h4>
-          <p class="work-author">Raul Pompeia</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Romance de crítica à sociedade através das memórias de Sérgio no ambiente opressivo de um prestigiado colégio interno.</p>
+        <div class="author-card">
+          <h4>Aluísio Azevedo</h4>
+          <span class="author-sub">Naturalismo/Realismo</span>
+          <p><strong>Obra:</strong> <em>O Cortiço</em></p>
+          <p><strong>Característica:</strong> Observação coletiva e determinismo do meio social.</p>
         </div>
       </div>
     </section>
 
-    <!-- PÁGINA EXPLORE -->
+    <!-- 4. PÁGINA EXPLORE -->
     <section id="explore" class="tab-content">
-      <h2 class="section-title">Explore Recursos Multimídia</h2>
-      <p class="section-subtitle">Navegue na Linha do Tempo e no Mapa Mental interativo dos movimentos.</p>
-
-      <!-- Linha do Tempo -->
-      <h3 style="text-align: center; margin-bottom: 2rem; color: var(--accent);">⏳ Linha do Tempo Literária</h3>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">1802 - Europa</span>
-            <h4>Surgimento do Romantismo</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Consolidação do Romantismo na Europa impulsionada pelos ideais da Revolução Francesa.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">1836 - Brasil</span>
-            <h4>Início do Romantismo Brasileiro</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Gonçalves de Magalhães publica <em>Suspiros Poéticos e Saudades</em>.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">1857 - Europa & Brasil</span>
-            <h4>Realismo na França & O Guarani</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Flaubert publica <em>Madame Bovary</em> na França; José de Alencar lança <em>O Guarani</em> no Brasil.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year">1881 - Brasil</span>
-            <h4>Marco do Realismo Brasileiro</h4>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Publicação de <em>Memórias Póstumas de Brás Cubas</em> de Machado de Assis.</p>
-          </div>
-        </div>
+      <div class="section-header">
+        <h2>Área Multimídia & Interativa</h2>
+        <p>Explore a evolução cronológica e esquemas visuais conceituais.</p>
       </div>
 
-      <!-- Mapa Mental -->
-      <h3 style="text-align: center; margin-top: 4rem; margin-bottom: 2rem; color: var(--accent);">🧠 Mapa Mental Resumido</h3>
-      <div class="mindmap-grid">
-        <div class="mindmap-node" style="border-top: 4px solid var(--accent);">
-          <div class="mindmap-header">
-            <h3>ROMANTISMO</h3>
-            <small>Emoção & Idealização</small>
-          </div>
-          <div class="mindmap-branches">
-            <div class="branch">
-              <h5>Características Key</h5>
-              <p style="font-size: 0.85rem;">Subjetividade • Amor Platônico • Herói Indígena • Escapismo</p>
-            </div>
-            <div class="branch">
-              <h5>Principais Autores</h5>
-              <p style="font-size: 0.85rem;">Gonçalves Dias • Álvares de Azevedo • Castro Alves • José de Alencar</p>
+      <!-- RECURSO 1: LINHA DO TEMPO -->
+      <div class="card timeline-card">
+        <h3>⏳ Linha do Tempo Literária</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">1800-1830</div>
+            <div class="timeline-content">
+              <h4>Contexto Romântico na Europa</h4>
+              <p>Revolução Industrial e consolidação do poder burguês. Busca por identidades nacionais.</p>
             </div>
           </div>
-        </div>
-
-        <div class="mindmap-node" style="border-top: 4px solid var(--primary);">
-          <div class="mindmap-header">
-            <h3>REALISMO</h3>
-            <small>Razão & Crítica Social</small>
-          </div>
-          <div class="mindmap-branches">
-            <div class="branch">
-              <h5>Características Key</h5>
-              <p style="font-size: 0.85rem;">Objetividade • Psicológico • Ironia • Crítica à Burguesia</p>
+          <div class="timeline-item">
+            <div class="timeline-date">1836</div>
+            <div class="timeline-content">
+              <h4>Início do Romantismo no Brasil</h4>
+              <p>Publicação de <em>Suspiros Poéticos e Saudades</em> (Gonçalves de Magalhães).</p>
             </div>
-            <div class="branch">
-              <h5>Principais Autores</h5>
-              <p style="font-size: 0.85rem;">Machado de Assis • Raul Pompeia • Aluísio Azevedo (Naturalismo)</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1840-1860</div>
+            <div class="timeline-content">
+              <h4>Auge do Romantismo</h4>
+              <p>1ª Geração (Nacionalista) e 2ª Geração (Ultra-romântica / Mal do Século).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1870</div>
+            <div class="timeline-content">
+              <h4>Transição & Poesia Condoreira</h4>
+              <p>Castro Alves lidera a 3ª Geração Romântica focada no abolicionismo.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1881</div>
+            <div class="timeline-content">
+              <h4>Marco Inicial do Realismo</h4>
+              <p>Publicação de <em>Memórias Póstumas de Brás Cubas</em> por Machado de Assis.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Área para Vídeos -->
-      <div style="margin-top: 4rem; text-align: center; padding: 2rem; background: var(--bg-card); border-radius: var(--radius); border: 1px dashed var(--border-color);">
-        <h4>🎬 Área Multimídia / Vídeos Recomendados</h4>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Espaço reservado para incorporação de videoaulas e análises no YouTube sobre o Vestibular.</p>
+      <!-- RECURSO 2: MAPA MENTAL -->
+      <div class="card">
+        <h3>🧠 Mapa Mental Conceitual</h3>
+        <div class="mindmap-container">
+          <div class="mindmap-node root-node">LITERATURA SÉC. XIX</div>
+          <div class="mindmap-branches">
+            <div class="mindmap-branch rom-branch">
+              <h4>🕯️ ROMANTISMO</h4>
+              <ul>
+                <li><strong>Emoção:</strong> Subjetividade e Sentimento</li>
+                <li><strong>Autores:</strong> G. Dias, Á. Azevedo, J. Alencar</li>
+                <li><strong>Obras:</strong> Iracema, Lira dos Vinte Anos</li>
+              </ul>
+            </div>
+            <div class="mindmap-branch real-branch">
+              <h4>🔬 REALISMO</h4>
+              <ul>
+                <li><strong>Razão:</strong> Objetividade e Crítica Social</li>
+                <li><strong>Autores:</strong> Machado de Assis, Raul Pompeia</li>
+                <li><strong>Obras:</strong> Dom Casmurro, Brás Cubas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ESPAÇO PARA VÍDEOS -->
+      <div class="card">
+        <h3>🎬 Vídeos Recomendados (Em Breve)</h3>
+        <p class="card-desc">Espaço reservado para incorporação de videoaulas e análises em áudio e vídeo.</p>
+        <div class="video-placeholder">
+          <span>📺 Conteúdo em Vídeo Indisponível no Momento</span>
+        </div>
       </div>
     </section>
 
-    <!-- PÁGINA DESAFIO (QUIZ) -->
+    <!-- 5. PÁGINA DESAFIO (QUIZ) -->
     <section id="desafio" class="tab-content">
       <div class="quiz-container">
+        <!-- Dashboard do Quiz -->
         <div class="quiz-header">
           <div>
-            <h3 style="font-size: 1.25rem;">Quiz de Literatura</h3>
-            <small style="color: var(--text-muted);" id="questionProgress">Questão 1 de 15</small>
+            <span id="quizQuestionCount" class="quiz-step">Questão 1 de 15</span>
+            <h3 style="margin: 4px 0 0 0;">Desafio de Revisão</h3>
           </div>
-          <div class="quiz-score-badge" id="scoreDisplay">Pontuação: 0 pts</div>
+          <div class="quiz-score-badge">
+            Pontuação: <span id="quizScore">0</span> pts
+          </div>
         </div>
 
-        <div class="progress-bar-container">
-          <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-bar-bg">
+          <div id="quizProgressBar" class="progress-bar-fill" style="width: 6.66%;"></div>
         </div>
 
-        <!-- Renderizador de Questões -->
-        <div id="quizContent">
-          <div class="question-box">
-            <h4 class="question-title" id="questionText">Carregando questão...</h4>
-            <div class="options-grid" id="optionsContainer"></div>
-          </div>
-
-          <div class="feedback-box" id="feedbackBox">
-            <strong id="feedbackTitle"></strong>
-            <p id="feedbackText" style="font-size: 0.9rem; margin-top: 0.25rem;"></p>
-          </div>
-
-          <button class="btn btn-primary next-btn" id="nextBtn" onclick="nextQuestion()">Próxima Questão ➔</button>
-        </div>
-
-        <!-- Tela de Resultado Final do Quiz -->
-        <div id="quizResult" style="display: none; text-align: center; padding: 1rem;">
-          <h2 style="font-size: 2rem; color: var(--accent);">Desafio Concluído! 🎉</h2>
-          <p style="font-size: 1.1rem; margin-top: 0.5rem;">Sua Pontuação Final:</p>
-          <div style="font-size: 3.5rem; font-weight: 800; color: var(--gold); margin: 1rem 0;" id="finalScore">0 / 150</div>
+        <!-- Pergunta -->
+        <div id="quizCard" class="card quiz-card">
+          <h3 id="questionText" class="question-text">Carregando pergunta...</h3>
+          <div id="optionsContainer" class="options-grid"></div>
           
-          <div id="classificationMessage" style="background: var(--bg-primary); padding: 1.25rem; border-radius: 12px; margin-bottom: 2rem; font-weight: 600;"></div>
-
-          <button class="btn btn-primary" onclick="restartQuiz()">🔄 Refazer Desafio</button>
+          <div id="feedbackBox" class="feedback-box hidden">
+            <p id="feedbackText"></p>
+            <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Próxima Questão ➔</button>
+          </div>
         </div>
 
-        <!-- Área de Conquistas Gamificadas -->
-        <div class="achievements-wrapper">
-          <h4 style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">Suas Conquistas:</h4>
-          <div class="achievements-grid">
-            <div class="achieve-card" id="ach1">
-              <div class="achieve-icon">🏆</div>
-              <div class="achieve-title">Primeiro passo</div>
-              <small style="font-size: 0.65rem; color: var(--text-muted);">Iniciou o desafio</small>
-            </div>
-            <div class="achieve-card" id="ach2">
-              <div class="achieve-icon">📚</div>
-              <div class="achieve-title">Leitor atento</div>
-              <small style="font-size: 0.65rem; color: var(--text-muted);">5 Acertos</small>
-            </div>
-            <div class="achieve-card" id="ach3">
-              <div class="achieve-icon">🔥</div>
-              <div class="achieve-title">Mestre da literatura</div>
-              <small style="font-size: 0.65rem; color: var(--text-muted);">10 Acertos</small>
-            </div>
-            <div class="achieve-card" id="ach4">
-              <div class="achieve-icon">👑</div>
-              <div class="achieve-title">Especialista</div>
-              <small style="font-size: 0.65rem; color: var(--text-muted);">Gabaritou (15 Acertos)</small>
-            </div>
+        <!-- Tela de Conclusão -->
+        <div id="quizResult" class="card quiz-result hidden">
+          <h2>🎉 Desafio Concluído!</h2>
+          <div class="final-score-display">
+            <span id="finalScoreText">150</span> / 150 pts
+          </div>
+          <p id="finalFeedbackMessage" class="result-msg"></p>
+
+          <div class="achievements-section">
+            <h4>🏆 Suas Conquistas Desbloqueadas:</h4>
+            <div id="achievementsGrid" class="achievements-grid"></div>
+          </div>
+
+          <div style="margin-top: 24px; text-align: center;">
+            <button class="btn btn-primary" onclick="restartQuiz()">🔄 Refazer Desafio</button>
+            <button class="btn btn-secondary" onclick="navigateTo('gabarito')">📜 Ver Gabarito Completo</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PÁGINA GABARITO -->
+    <!-- 6. PÁGINA GABARITO -->
     <section id="gabarito" class="tab-content">
-      <h2 class="section-title">Gabarito Comentado</h2>
-      <p class="section-subtitle">Consulte as respostas corretas e as justificativas pedagógicas de cada questão.</p>
+      <div class="section-header">
+        <h2>Gabarito Comentado</h2>
+        <p>Confira as respostas corretas e as explicações de todas as 15 questões do Desafio.</p>
+      </div>
 
-      <div id="gabaritoList" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
-        <!-- Inserido dinamicamente via JS -->
+      <div id="gabaritoContainer" class="gabarito-list">
+        <!-- Renderizado via Javascript -->
       </div>
     </section>
 
-    <!-- PÁGINA DESAFIO FINAL -->
+    <!-- 7. DESAFIO FINAL -->
     <section id="desafio-final" class="tab-content">
-      <div class="final-challenge-card">
-        <div style="text-align: center; margin-bottom: 2rem;">
-          <span class="hero-badge">🔥 Prova Prática</span>
-          <h2 style="font-size: 1.8rem; margin-top: 0.5rem;">DESAFIO FINAL — VOCÊ CONSEGUE?</h2>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">Leia o texto literário inédito e responda às perguntas analíticas.</p>
-        </div>
+      <div class="section-header">
+        <h2>Desafio Final — Você Consegue?</h2>
+        <p>Análise literária de nível avançado. Leia o trecho e demonstre seu domínio sobre os movimentos.</p>
+      </div>
 
-        <div class="literary-quote" style="font-size: 0.95rem; margin-bottom: 2rem;">
-          "Marcela amou-me durante quinze meses e onze contos de réis; nada menos. Meu pai, ao saber da extravagância dos meus presentes, franziu a testa e ameaçou mandar-me para a Europa. Na verdade, a paixão era um delírio que me custava caro, mas que no fundo divertia a minha vaidade."
-        </div>
+      <div class="card">
+        <h3>📄 Texto para Análise</h3>
+        <blockquote class="literary-quote">
+          "D. Camila olhou para o espelho do salão com um ar de profunda reflexão. Não lamentava a partida do noivo, mas sim o fato de que a carruagem dele quebrara o arranjo de flores da entrada. O casamento, afinal, garantiria a reforma da mansão de seu pai, e isso era tudo o que importava para a família naquela estação."
+        </blockquote>
 
-        <form id="finalForm" onsubmit="handleFinalSubmit(event)">
+        <form id="desafioFinalForm" onsubmit="handleDesafioFinal(event)" style="margin-top: 20px;">
           <div class="form-group">
-            <label for="inputMovimento">1. Qual é o Movimento Literário deste trecho?</label>
-            <input type="text" id="inputMovimento" class="form-input" placeholder="Digite o movimento literário..." required>
+            <label for="inputMovimento">1. Qual é o movimento literário deste texto?</label>
+            <input type="text" id="inputMovimento" class="form-input" placeholder="Ex: Realismo ou Romantismo" required>
           </div>
 
           <div class="form-group">
-            <label for="inputCaracteristicas">2. Cite DUAS características evidentes no texto:</label>
-            <textarea id="inputCaracteristicas" class="form-textarea" placeholder="Ex: Ironia, interesse material..." required></textarea>
+            <label for="inputCaracteristicas">2. Cite DUAS características do movimento presentes no texto:</label>
+            <textarea id="inputCaracteristicas" class="form-input" rows="3" placeholder="Ex: Critica social e interesse financeiro..." required></textarea>
           </div>
 
           <div class="form-group">
-            <label for="inputJustificativa">3. Justifique sua resposta com elementos do trecho:</label>
-            <textarea id="inputJustificativa" class="form-textarea" placeholder="Explique com suas palavras relacionando ao trecho..." required></textarea>
+            <label for="inputJustificativa">3. Justifique sua resposta com elementos do texto:</label>
+            <textarea id="inputJustificativa" class="form-input" rows="3" placeholder="Explique por que o trecho confirma sua resposta..." required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Ver Resposta Esperada</button>
+          <button type="submit" class="btn btn-primary">Ver resposta esperada</button>
         </form>
 
-        <div class="expected-answer" id="expectedAnswer">
-          <h4 style="color: var(--gold); margin-bottom: 0.75rem;">💡 Resposta Esperada e Análise do Trecho:</h4>
-          <p><strong>1. Movimento Literário:</strong> Realismo (Trecho inspirado no estilo machadiano de <em>Memórias Póstumas de Brás Cubas</em>).</p>
-          <p style="margin-top: 0.5rem;"><strong>2. Características:</strong> 
-            <br>• <strong>Ironia e Antirromantismo:</strong> A medição do amor em tempo e dinheiro ("quinze meses e onze contos de réis").
-            <br>• <strong>Análise Psicológica / Sinceridade Nua:</strong> O narrador admite que o amor alimentava sua própria vaidade.
-          </p>
-          <p style="margin-top: 0.5rem;"><strong>3. Justificativa:</strong> Diferente do Romantismo, onde o amor é puro e sublime, o texto reduz a relação a uma troca financeira mercantil e à satisfação do ego, marcas registradas da objetividade realista.</p>
+        <div id="respostaEsperada" class="analysis-box hidden" style="margin-top: 24px; border-left-color: #2e7d32;">
+          <h4 style="color: #2e7d32; margin-bottom: 8px;">✅ Resposta Esperada & Análise do Gabarito:</h4>
+          <p><strong>1. Movimento Literário:</strong> Realismo.</p>
+          <p><strong>2. Características Identificadas:</strong></p>
+          <ul>
+            <li><strong>Pragmatismo/Interesse Financeiro:</strong> O casamento é tratado como transação econômica ("garantiria a reforma da mansão").</li>
+            <li><strong>Falta de Idealização Amorosa (Antirromantismo):</strong> D. Camila se preocupa com o vaso de flores quebrado e não com a ausência do noivo.</li>
+          </ul>
+          <p><strong>3. Justificativa:</strong> O texto adota uma linguagem objetiva e irônica para desmistificar o amor, destacando a conveniência financeira das relações matrimoniais burguesas.</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <p style="font-size: 0.9rem; color: var(--text-muted);">
-      Projeto Escolar de Língua Portuguesa & Literatura — Ensino Médio<br>
-      Desenvolvido por <strong>Luan</strong> e <strong>Matheus S.</strong>
-    </p>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p>© Português em Jogo — Projeto Escolar de Língua Portuguesa e Literatura</p>
+      <p>Desenvolvido por <strong>Luan & Matheus S.</strong> • Ensino Médio</p>
+    </div>
   </footer>
 
-  <button class="back-top-btn" id="backTopBtn" onclick="scrollToTop()" aria-label="Voltar ao topo">↑</button>
+  <!-- Botão Voltar ao Topo -->
+  <button id="backToTop" class="back-to-top" onclick="scrollToTop()" aria-label="Voltar ao topo">⬆</button>
 
-  <script>
-    /* ==========================================================================
-       1. DADOS DAS 15 QUESTÕES DO QUIZ
-       ========================================================================== */
-    const quizData = [
-      {
-        id: 1,
-        question: "Qual das alternativas traz a principal oposição filosófica entre Romantismo e Realismo?",
-        options: [
-          "Romantismo foca na razão e Realismo na igreja",
-          "Romantismo prioriza o sentimento e idealização; Realismo prioriza a razão e objetividade",
-          "Romantismo rejeita a natureza e Realismo a exalta",
-          "Ambos defendem exatamente as mesmas ideias"
-        ],
-        answer: 1,
-        explanation: "O Romantismo coloca a emoção e a idealização no centro da criação, enquanto o Realismo busca analisar a realidade com objetividade e racionalidade."
-      },
-      {
-        id: 2,
-        question: "Qual obra é considerada o marco inicial do Realismo no Brasil em 1881?",
-        options: [
-          "Iracema, de José de Alencar",
-          "O Guarani, de José de Alencar",
-          "Memórias Póstumas de Brás Cubas, de Machado de Assis",
-          "Lira dos Vinte Anos, de Álvares de Azevedo"
-        ],
-        answer: 2,
-        explanation: "Publicado em 1881 por Machado de Assis, 'Memórias Póstumas de Brás Cubas' inaugurou o Realismo no Brasil com seu tom irônico e inovador."
-      },
-      {
-        id: 3,
-        question: "A 2ª Geração da poesia romântica brasileira é conhecida por qual das características abaixo?",
-        options: [
-          "Indianismo e exaltação da pátria",
-          "Condoreirismo e luta abolicionista",
-          "Ultrarromantismo, Mal do Século e atração pela morte",
-          "Crítica objetiva às instituições financeiras"
-        ],
-        answer: 2,
-        explanation: "A 2ª Geração (Ultrarromântica) é marcada por forte egocentrismo, melancolia, pessimismo e obsessão pela morte (Mal do Século)."
-      },
-      {
-        id: 4,
-        question: "Qual figura histórica foi adotada como o 'herói nacional' pela 1ª Geração Romântica no Brasil?",
-        options: [
-          "O bandeirante europeu",
-          "O indígena brasileiro",
-          "O imigrante italiano",
-          "O fidalgo português"
-        ],
-        answer: 1,
-        explanation: "Na busca por construir uma identidade nacional pós-independência, os românticos da 1ª Geração elegeram o indígena como o herói idealizado do Brasil."
-      },
-      {
-        id: 5,
-        question: "Associe o autor Castro Alves à sua principal bandeira poética na 3ª Geração Romântica:",
-        options: [
-          "Defesa da colonização portuguesa",
-          "Luta abolicionista e denúncia da escravidão",
-          "Isolamento em cavernas e desespero amoroso",
-          "Análise psicológica da hipocrisia burguesa"
-        ],
-        answer: 1,
-        explanation: "Castro Alves ficou conhecido como 'O Poeta dos Escravos' por usar a poesia social (Condoreira) para combater a escravidão com obras como 'O Navio Negreiro'."
-      },
-      {
-        id: 6,
-        question: "Como o casamento é frequentemente retratado na literatura Realista?",
-        options: [
-          "Como uma união abençoada por anjos",
-          "Como a salvação espiritual definitiva dos amantes",
-          "Como uma convenção social ou contrato de interesse material",
-          "Como um evento sem relevância social"
-        ],
-        answer: 2,
-        explanation: "No Realismo, o casamento perde o caráter sagrado romântico e é despido, revelando interesses de status, dote e frequentes adultérios."
-      },
-      {
-        id: 7,
-        question: "(V ou F) O Naturalismo é uma vertente radical do Realismo que enfatiza o instinto e o determinismo biológico.",
-        options: [
-          "Verdadeiro",
-          "Falso"
-        ],
-        answer: 0,
-        explanation: "Verdadeiro! O Naturalismo (exemplificado por 'O Cortiço' de Aluísio Azevedo) leva o Realismo ao extremo, encarando o ser humano guiado por instintos."
-      },
-      {
-        id: 8,
-        question: "Qual das obras a seguir NÃO pertence ao movimento Romântico?",
-        options: [
-          "A Moreninha",
-          "O Guarani",
-          "Dom Casmurro",
-          "Suspiros Poéticos e Saudades"
-        ],
-        answer: 2,
-        explanation: "'Dom Casmurro' é uma das obras-primas do Realismo de Machado de Assis, enquanto as outras são clássicos românticos."
-      },
-      {
-        id: 9,
-        question: "A característica da 'análise psicológica' aprofundada das personagens é marcante em qual movimento?",
-        options: [
-          "Romantismo",
-          "Realismo",
-          "Quinhentismo",
-          "Arcadismo"
-        ],
-        answer: 1,
-        explanation: "O Realismo destaca-se por examinar a mente, as contradições morais e os impulsos ocultos das personagens."
-      },
-      {
-        id: 10,
-        question: "Quem escreveu a famosa obra romântica 'Lira dos Vinte Anos'?",
-        options: [
-          "Gonçalves Dias",
-          "Álvares de Azevedo",
-          "Machado de Assis",
-          "Raul Pompeia"
-        ],
-        answer: 1,
-        explanation: "Álvares de Azevedo é o maior patrono do Ultrarromantismo no Brasil e autor de 'Lira dos Vinte Anos'."
-      },
-      {
-        id: 11,
-        question: "A ironia é uma ferramenta estilística predominantemente utilizada por qual autor realista?",
-        options: [
-          "José de Alencar",
-          "Castro Alves",
-          "Machado de Assis",
-          "Gonçalves de Magalhães"
-        ],
-        answer: 2,
-        explanation: "Machado de Assis é mundialmente aclamado por sua ironia fina e elegante para desmascarar as aparências sociais."
-      },
-      {
-        id: 12,
-        question: "No Romantismo, como a natureza é retratada?",
-        options: [
-          "Como algo neutro e sem importância",
-          "Como uma força hostil descrita cientificamente",
-          "Como um espelho dos sentimentos e estado de alma do poeta",
-          "Como uma propriedade comercial a ser vendida"
-        ],
-        answer: 2,
-        explanation: "A natureza romântica é expressiva e empática: ela fica tempestuosa se o poeta sofre e ensolarada se ele ama."
-      },
-      {
-        id: 13,
-        question: "A obra 'O Ateneu', de Raul Pompeia, aborda a crítica social ambientada em qual lugar?",
-        options: [
-          "Em um navio negreiro",
-          "Em um colégio interno para rapazes",
-          "Em uma tribo indígena",
-          "Em um tribunal da corte"
-        ],
-        answer: 1,
-        explanation: "'O Ateneu' utiliza o colégio interno como um microcosmo da própria sociedade hipócrita e competitiva da época."
-      },
-      {
-        id: 14,
-        question: "Qual foi o marco inicial do Romantismo no Brasil em 1836?",
-        options: [
-          "Canção do Exílio",
-          "Suspiros Poéticos e Saudades",
-          "Iracema",
-          "O Cortiço"
-        ],
-        answer: 1,
-        explanation: "O livro 'Suspiros Poéticos e Saudades', de Gonçalves de Magalhães (1836), iniciou formalmente o período romântico no Brasil."
-      },
-      {
-        id: 15,
-        question: "Assinale a opção que identifica corretamente o trecho: 'Minha terra tem palmeiras, Onde canta o Sabiá...'",
-        options: [
-          "Realismo - Machado de Assis",
-          "Romantismo (1ª Geração) - Gonçalves Dias",
-          "Romantismo (3ª Geração) - Castro Alves",
-          "Naturalismo - Aluísio Azevedo"
-        ],
-        answer: 1,
-        explanation: "Trata-se dos versos clássicos da 'Canção do Exílio' de Gonçalves Dias, expoente da 1ª Geração Romântica Nacionalista."
-      }
-    ];
-
-    /* ==========================================================================
-       2. ESTADO DA APLICAÇÃO (APP STATE)
-       ========================================================================== */
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let userAnswers = [];
-    let answeredQuestions = 0;
-
-    /* ==========================================================================
-       3. CONTROLE DE NAVEGAÇÃO SPA (TABS) E MENU MOBILE
-       ========================================================================== */
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      const targetTab = document.getElementById(tabId);
-      if (targetTab) {
-        targetTab.classList.add('active');
-      }
-
-      // Ativar botão correto
-      const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(
-        btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)
-      );
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
-
-      // Fechar menu mobile se estiver aberto
-      document.getElementById('navMenu').classList.remove('show');
-
-      // Rolar para o topo suavemente
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function toggleMobileMenu() {
-      document.getElementById('navMenu').classList.toggle('show');
-    }
-
-    /* ==========================================================================
-       4. CONTROLE DE TEMA (CLARO / ESCURO)
-       ========================================================================== */
-    function toggleTheme() {
-      const html = document.documentElement;
-      const themeBtn = document.getElementById('themeBtn');
-
-      if (html.classList.contains('light-theme')) {
-        html.classList.remove('light-theme');
-        html.classList.add('dark-theme');
-        themeBtn.textContent = '☀️';
-      } else {
-        html.classList.remove('dark-theme');
-        html.classList.add('light-theme');
-        themeBtn.textContent = '🌙';
-      }
-    }
-
-    /* ==========================================================================
-       5. LÓGICA DO QUIZ GAMIFICADO
-       ========================================================================== */
-    function loadQuestion() {
-      const q = quizData[currentQuestionIndex];
-      
-      // Atualizar contador e progresso
-      document.getElementById('questionProgress').textContent = `Questão ${currentQuestionIndex + 1} de ${quizData.length}`;
-      document.getElementById('questionText').textContent = `${q.id}. ${q.question}`;
-      
-      const progressPercent = ((currentQuestionIndex + 1) / quizData.length) * 100;
-      document.getElementById('progressBar').style.width = `${progressPercent}%`;
-
-      // Renderizar opções
-      const container = document.getElementById('optionsContainer');
-      container.innerHTML = '';
-
-      q.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.innerHTML = `<span>${String.fromCharCode(65 + idx)}) ${opt}</span>`;
-        btn.onclick = () => selectOption(idx);
-        container.appendChild(btn);
-      });
-
-      // Esconder feedback e botão próxima
-      const fbBox = document.getElementById('feedbackBox');
-      fbBox.className = 'feedback-box';
-      fbBox.style.display = 'none';
-      document.getElementById('nextBtn').style.display = 'none';
-
-      // Conquista: Primeiro passo
-      unlockAchievement('ach1');
-    }
-
-    function selectOption(selectedIndex) {
-      const q = quizData[currentQuestionIndex];
-      const buttons = document.querySelectorAll('.option-btn');
-
-      // Desabilitar botões após resposta
-      buttons.forEach(btn => btn.disabled = true);
-
-      const isCorrect = selectedIndex === q.answer;
-
-      if (isCorrect) {
-        buttons[selectedIndex].classList.add('correct');
-        score += 10;
-        showFeedback(true, "✨ Você acertou!", q.explanation);
-      } else {
-        buttons[selectedIndex].classList.add('wrong');
-        buttons[q.answer].classList.add('correct');
-        showFeedback(false, "❌ Resposta incorreta", q.explanation);
-      }
-
-      userAnswers.push({ questionId: q.id, selected: selectedIndex, correct: isCorrect });
-      answeredQuestions++;
-
-      // Atualizar pontuação na UI
-      document.getElementById('scoreDisplay').textContent = `Pontuação: ${score} pts`;
-
-      // Verificar Conquistas por acertos
-      const correctCount = userAnswers.filter(a => a.correct).length;
-      if (correctCount >= 5) unlockAchievement('ach2');
-      if (correctCount >= 10) unlockAchievement('ach3');
-      if (correctCount === 15) unlockAchievement('ach4');
-
-      document.getElementById('nextBtn').style.display = 'block';
-    }
-
-    function showFeedback(isCorrect, title, text) {
-      const fbBox = document.getElementById('feedbackBox');
-      fbBox.className = `feedback-box show ${isCorrect ? 'correct-fb' : 'wrong-fb'}`;
-      document.getElementById('feedbackTitle').textContent = title;
-      document.getElementById('feedbackText').textContent = text;
-      fbBox.style.display = 'block';
-    }
-
-    function nextQuestion() {
-      currentQuestionIndex++;
-
-      if (currentQuestionIndex < quizData.length) {
-        loadQuestion();
-      } else {
-        finishQuiz();
-      }
-    }
-
-    function finishQuiz() {
-      document.getElementById('quizContent').style.display = 'none';
-      const resultDiv = document.getElementById('quizResult');
-      resultDiv.style.display = 'block';
-
-      document.getElementById('finalScore').textContent = `${score} / 150`;
-
-      // Mensagem de classificação do edital
-      let msg = "";
-      if (score <= 50) {
-        msg = "Continue estudando! Você está começando a sua jornada nos movimentos literários.";
-      } else if (score <= 90) {
-        msg = "Bom trabalho! Você já conhece boa parte do conteúdo de Romantismo e Realismo.";
-      } else if (score <= 120) {
-        msg = "Muito bem! Seu conhecimento está avançado e você vai se dar ótimo nas avaliações.";
-      } else {
-        msg = "Excelente! Você domina perfeitamente o conteúdo de Português e Literatura!";
-      }
-
-      document.getElementById('classificationMessage').textContent = msg;
-    }
-
-    function restartQuiz() {
-      currentQuestionIndex = 0;
-      score = 0;
-      userAnswers = [];
-      answeredQuestions = 0;
-
-      document.getElementById('scoreDisplay').textContent = `Pontuação: 0 pts`;
-      document.getElementById('quizContent').style.display = 'block';
-      document.getElementById('quizResult').style.display = 'none';
-
-      loadQuestion();
-    }
-
-    function unlockAchievement(achId) {
-      const card = document.getElementById(achId);
-      if (card) {
-        card.classList.add('unlocked');
-      }
-    }
-
-    /* ==========================================================================
-       6. RENDERIZAÇÃO DO GABARITO COMPLETO
-       ========================================================================== */
-    function renderGabarito() {
-      const container = document.getElementById('gabaritoList');
-      container.innerHTML = '';
-
-      quizData.forEach(q => {
-        const item = document.createElement('div');
-        item.className = 'card';
-        item.style.padding = '1.25rem';
-
-        const correctText = q.options[q.answer];
-
-        item.innerHTML = `
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <strong>Questão ${q.id}</strong>
-            <span class="hero-badge" style="margin:0;">10 PONTOS</span>
-          </div>
-          <p style="font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem;">${q.question}</p>
-          <p style="color: var(--success); font-weight: 700; font-size: 0.9rem;">✔️ Resposta Correta: ${correctText}</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; background: var(--bg-primary); padding: 0.6rem; border-radius: 8px;">
-            💡 <strong>Explicação:</strong> ${q.explanation}
-          </p>
-        `;
-        container.appendChild(item);
-      });
-    }
-
-    /* ==========================================================================
-       7. CONTROLE DO DESAFIO FINAL
-       ========================================================================== */
-    function handleFinalSubmit(e) {
-      e.preventDefault();
-      document.getElementById('expectedAnswer').style.display = 'block';
-      document.getElementById('expectedAnswer').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    /* ==========================================================================
-       8. BOTÃO VOLTAR AO TOPO
-       ========================================================================== */
-    window.addEventListener('scroll', () => {
-      const btn = document.getElementById('backTopBtn');
-      if (window.scrollY > 300) {
-        btn.classList.add('visible');
-      } else {
-        btn.classList.remove('visible');
-      }
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    /* ==========================================================================
-       INICIALIZAÇÃO DO APP
-       ========================================================================== */
-    window.onload = function() {
-      loadQuestion();
-      renderGabarito();
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
